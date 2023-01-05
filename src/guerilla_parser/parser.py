@@ -773,18 +773,18 @@ class GuerillaParser(object):
             # eg. NodePos, PreClamp, PostClamp, Value, etc.
             return [float(v) for v in raw_str[1:-1].split(',')]
 
-            # TODO: "matrix.create" and "transform.create" are not supported yet
+            # TODO: "matrix.create" and "transform.create" are not fully supported yet
             # because we loose the matrix.create and transform.create
             # information when setting plug values
-            '''elif raw_str.startswith('matrix.create{'):
+        elif raw_str.startswith('matrix.create{'):
 
-                content = raw_str[len('matrix.create{'):-1]
-                return [float(v) for v in content.split(',')]
+            content = raw_str[len('matrix.create{'):-1]
+            return [float(v) for v in content.split(',')]
 
-            elif raw_str.startswith('transform.create{'):
+        elif raw_str.startswith('transform.create{'):
 
-                content = raw_str[len('transform.create{'):-1]
-                return [float(v) for v in content.split(',')]'''
+            content = raw_str[len('transform.create{'):-1]
+            return [float(v) for v in content.split(',')]
 
         elif raw_str in ('transform.Id', 'matrix.Id'):
 
