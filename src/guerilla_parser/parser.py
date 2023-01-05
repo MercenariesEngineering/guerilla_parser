@@ -789,7 +789,7 @@ class GuerillaParser(object):
         elif raw_str in ('transform.Id', 'matrix.Id'):
 
             # those are Guerilla shortcut to identity matrix
-            return raw_str
+            return [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 
         if _print_missing_implementation:
             print(("Missing lua to python conversion "
