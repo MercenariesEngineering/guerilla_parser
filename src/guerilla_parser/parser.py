@@ -434,7 +434,8 @@ class GuerillaParser(object):
                         value = value[1:-1].split('\\010')
                         param = self.__lua_dict_to_python(param)
                     else:
-                        assert False, args
+                        value = str(value)
+                        #assert False, args
 
                     # convert param to python dict
                     if any((param == '{}',
