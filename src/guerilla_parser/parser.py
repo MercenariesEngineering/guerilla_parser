@@ -407,8 +407,13 @@ class GuerillaParser(object):
                         # "{1,0.5,0.5}" to (1,0.5,0.5)
                         value = eval(value.replace('{', '(').replace('}', ')'))
                     elif plug_type == 'types.enum':
-                        value = str(value)
                         # '{{"Enabled","enable"},{"Disabled","disable"}}'
+                        # or
+                        # '{{"Enabled",0},{"Disabled",1}}'
+                        try:
+                            value = float(value)
+                        except ValueError:
+                            value = str(value)
                         # TODO
                         param = {}
                     elif plug_type == 'types.hset':
