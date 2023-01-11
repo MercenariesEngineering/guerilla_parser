@@ -80,7 +80,7 @@ parse_type_string = {
 }
 
 # floating value regex "4.64"
-_FLOAT_PARSE = re.compile('^[0-9.-]+$')
+_FLOAT_PARSE = re.compile('^[0-9.e-]+$')
 
 # float table {127.5,-80, ...}
 _FLOAT_TABLE_PARSE = re.compile('^{[0-9.,-]+}$')
