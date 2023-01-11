@@ -44,6 +44,7 @@ parse_type_double_quoted_str = {
     'types.materials',
     'types.animationmode',
     'types.colorspaces',
+    'types.lightcategory',
 }
 
 # types being simple floats (no parameters)
@@ -446,6 +447,9 @@ class GuerillaParser(object):
                     else:
                         value = str(value)
                         #assert False, args
+
+                    if isinstance(value, str) and len(value) > 2 and value[0] == '"' and value[len(value)-1] == '"':
+                        value = str(value[1:-1])
 
                     # convert param to python dict
                     if any((param == '{}',
