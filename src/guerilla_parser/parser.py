@@ -655,6 +655,21 @@ class GuerillaParser(object):
                     out_node = self.__create_and_get_implicit_node(out_node,
                                                                    out_path)
 
+                assert in_plug_name is not None
+                assert out_plug_name is not None
+
+                try:
+                    in_plug = in_node.plug_dict[in_plug_name]
+                except KeyError:
+                    in_plug = GuerillaPlug(in_plug_name, 'Plug', in_node)
+
+                try:
+                    out_plug = out_node.plug_dict[out_plug_name]
+                except KeyError:
+                    out_plug = GuerillaPlug(out_plug_name, 'Plug', out_node)
+
+                assert in_plug.input is None, in_plug_name
+
                 if self.diagnose:
                     if out_node.id == 1:
                         out_node_path = ""
@@ -667,7 +682,9 @@ class GuerillaParser(object):
                     print(('Depend: {out_node_path}.{out_plug_name} -> '
                            '{in_node_path}.{in_plug_name}').format(**locals()))
 
-                # TODO: For now, dependencies are not supported
+                # p1.out -> p2.in
+                out_plug.dep_outputs.append(in_plug)
+                in_plug.dep_input = out_plug
 
             elif _print_unknown_command:
                 print("Unknown command '{cmd}'".format(**locals()))

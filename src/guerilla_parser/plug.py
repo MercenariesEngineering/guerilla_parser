@@ -16,6 +16,10 @@ class GuerillaPlug(object):
     :vartype input: GuerillaPlug
     :ivar outputs: Plug outputs.
     :vartype outputs: list[GuerillaPlug]
+    :ivar dep_input: Plug input.
+    :vartype dep_input: GuerillaPlug
+    :ivar dep_outputs: Plug dependencies outputs.
+    :vartype dep_outputs: list[GuerillaPlug]
     """
     def __init__(self, name, type_, parent, value=None, flag=None,
                  org_value=None):
@@ -44,8 +48,9 @@ class GuerillaPlug(object):
         self.org_value = org_value
 
         self.input = None
-
         self.outputs = []
+        self.dep_input = None
+        self.dep_outputs = []
 
         # add current plug to given parent plugs
         assert name not in self.parent.plug_dict, (name,
