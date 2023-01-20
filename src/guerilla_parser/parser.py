@@ -33,7 +33,8 @@ plug_class_names = {'BakePlug',
                     'SceneGraphNodePropsPlug',
                     'SceneGraphNodeRenderPropsPlug',
                     'AttributePlug',
-                    'AttributeShaderPlug'}
+                    'AttributeShaderPlug',
+                    'RenderGraphNodeAttributesPlug'}
 
 # types always having double quoted string ('"loop"')
 parse_type_double_quoted_str = {
