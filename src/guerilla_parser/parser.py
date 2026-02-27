@@ -542,7 +542,7 @@ class GuerillaParser(object):
 
                 in_node = self.objs[in_oid]
 
-                if out_oid is 0 and 0 not in self.objs:
+                if out_oid == 0 and 0 not in self.objs:
                     # 0 is a special value referencing root document, we have a
                     # glayer trying to connect to document root attribute, we
                     # don't support this.
@@ -638,7 +638,7 @@ class GuerillaParser(object):
                 # Guerilla root node. This node doesn't exists in the context
                 # of parsing:
                 # depend("$17.Out","$0|Preferences.ShutterClose")
-                if out_oid is 0 and 0 not in self.objs:
+                if out_oid == 0 and 0 not in self.objs:
                     print(("Trying to depends on document reference "
                            "'{args}'").format(**locals()))
                     continue
